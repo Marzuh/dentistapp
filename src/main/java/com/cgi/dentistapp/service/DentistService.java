@@ -19,6 +19,7 @@ public class DentistService {
         this.dentistRepository = dentistRepository;
     }
 
+
     public List<Dentist> getAllDentists() {
         return dentistRepository.findAll();
     }
@@ -37,7 +38,8 @@ public class DentistService {
 
 
     /**
-     * add data to database at each  new spring start
+     * For test purpose
+     * add dentists to temporary database at each  new spring start
      */
     @EventListener(ApplicationReadyEvent.class)
     public void addDentistData() {
