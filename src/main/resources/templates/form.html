@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
+
+<form action="#" th:action="@{/register2}" th:object="${dentistDTO}" method="post">
+    <table>
+        <tr>
+            <td><p th:text="#{dentist.name}">dentist.name</p></td>
+            <td><select name="*{dentistId}" id="*{dentistId}" onchange="this.form.submit()" th:field="*{dentistId}">
+                <option value="" th:text="#{select.dentist}">--</option>
+                <option th:each="dentist : ${dentistList}"
+                        th:value="${dentist.getId()}"
+                        th:text="${dentist.getFullName()}">Dentist's name
+                </option>
+            </select>
+            <td th:if="${#fields.hasErrors('dentistId')}" th:errors="*{dentistId}">name.error</td>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<form action="#" th:action="@{/register}" th:object="${dentistVisitDTO}" method="post"
+th:if="${savedDentistId}">
+    <table>
+        <tr>
+            <td><p th:text="#{visit.date}">visit.date</p></td>
+            <td><select name="*{visitId}" th:field="${dentistVisitDTO.visitId}">
+                <option value="" th:text="#{select.visit}"> --</option>
+                <option th:each="visit : ${visitTimes}"
+                        th:value="${visit.getId()}"
+                        th:text="${visit.getVisitTimeToString()}">Dentist's name
+                </option>
+            </select>
+            <td th:if="${#fields.hasErrors('visitId')}" th:errors="*{visitId}">date.error</td>
+            </td>
+        </tr>
+        <tr>
+            <td><p th:text="#{visitor.id}">visitor.id</p></td>
+            <td><input type="text" th:field="*{visitorId}"/></td>
+            <td><input type="hidden" th:field="*{dentistId}" th:value="${savedDentistId}"/></td>
+            <td th:if="${#fields.hasErrors('visitorId')}" th:errors="*{visitorId}">visitor.error</td>
+        </tr>
+        <tr>
+            <td th:if="${visitAlreadyBooked}" th:text="#{dentistForm.timeNotAvailable}">date.error
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/">Esilehel</a>
+            </td>
+            <td>
+                <button type="submit" th:text="#{registration.submin}"></button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

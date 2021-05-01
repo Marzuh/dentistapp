@@ -2,11 +2,13 @@
      style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
 
 
-    <a th:href="@{/register}">Register</a>
+    <a th:href="@{/register }" th:text="#{navbar.form}">Register</a>
 
     | &nbsp;
 
-    <a th:href="@{/registered_visits}">Visits</a>
+    <a th:href="@{/registered-visits}" th:text="#{navbar.bookedTimes}">Visits</a>
 
 
+<!-- add later-->
+<!--    <a th:href="@{/dentist-form}" th:text="#{navbar.dentist}">Visits</a>-->
 </div>
