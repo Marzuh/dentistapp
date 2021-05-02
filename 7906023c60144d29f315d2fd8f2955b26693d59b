@@ -1,0 +1,15 @@
+[ver:1,total:19800,branch:master]
+.gtm/Spring Boot-> DentistAppApplication.app:12412,1619902800:86,1619906400:1494,1619910000:696,1619978400:1902,1619982000:1213,1619985600:2386,1619989200:2681,1619992800:1954,r
+src/main/resources/templates/index.html:1851,1619982000:611,1619985600:238,1619989200:645,1619992800:357,m
+src/main/java/com/cgi/dentistapp/controller/DentistAppController.java:987,1619906400:101,1619910000:138,1619978400:538,1619982000:30,1619996400:180,m
+src/main/resources/templates/_menu.html:951,1619985600:676,1619989200:211,1619992800:64,m
+src/main/java/com/cgi/dentistapp/repository/DentistVisitRepository.java:898,1619902800:274,1619906400:624,m
+src/main/resources/templates/form.html:696,1619906400:12,1619910000:12,1619978400:310,1619989200:30,1619992800:320,1619996400:12,m
+pom.xml:666,1619982000:666,r
+src/main/resources/templates/registered-visits.html:481,1619906400:78,1619910000:106,1619992800:69,1619996400:228,m
+src/main/java/com/cgi/dentistapp/service/DentistVisitService.java:401,1619906400:281,1619910000:20,1619978400:100,m
+src/main/resources/i18n/messages.properties:172,1619910000:98,1619978400:10,1619989200:33,1619992800:31,m
+src/main/java/com/cgi/dentistapp/entity/DentistVisitEntity.java:154,1619906400:154,m
+src/main/java/com/cgi/dentistapp/dto/DentistVisitDTO.java:96,1619906400:16,1619978400:80,m
+src/main/resources/templates/_footer.html:25,1619992800:25,m
+src/main/resources/templates/bad-request.html:10,1619910000:10,d
