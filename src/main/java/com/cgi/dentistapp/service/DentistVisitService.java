@@ -37,6 +37,7 @@ public class DentistVisitService {
     }
 
     public void delete(Long id) {
+        dentistVisitRepository.findDentistVisitEntityById(id).setBooked(false);
         dentistVisitRepository.delete(id);
     }
 
@@ -48,13 +49,10 @@ public class DentistVisitService {
     }
 
     public List<DentistVisitEntity> getAllFreeDentistVisits() {
-        return getAllDentistVisit().stream()
-                .filter(dentistVisitEntity -> !dentistVisitEntity.isBooked())
-                .collect(Collectors.toList());
+        return dentistVisitRepository.findAllByBookedFalse();
     }
 
-    public void addVisit(Long dentistId, Long visitId, String visitorId) {
-       // DentistVisitEntity dve =  dentistVisitRepository.getOne(visitId);
+    public void addVisit(Long visitId, String visitorId) {
         DentistVisitEntity dve = dentistVisitRepository.findDentistVisitEntityById(visitId);
         dve.setBooked(true);
         dve.setVisitorId(visitorId);
@@ -66,7 +64,8 @@ public class DentistVisitService {
     }
 
     public List<DentistVisitEntity> getVisitsById(Long id){
-       return dentistVisitRepository.findDentistVisitEntitiesById(id);
+      //return dentistVisitRepository.findDentistVisitEntitiesById(id);
+       return dentistVisitRepository.findDentistVisitEntitiesByBookedFalseAndId(id);
     }
     /**
      * For test purpose

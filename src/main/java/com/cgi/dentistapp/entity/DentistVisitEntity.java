@@ -29,7 +29,7 @@ public class DentistVisitEntity {
     private String VisitorId;
 
     @Column(name="is_booked")
-    private boolean isBooked;
+    private boolean booked;
 
     public Long getId() {
         return id;
@@ -64,11 +64,11 @@ public class DentistVisitEntity {
     }
 
     public boolean isBooked() {
-        return isBooked;
+        return booked;
     }
 
     public void setBooked(boolean booked) {
-        isBooked = booked;
+        this.booked = booked;
     }
 
     public String getVisitTimeToString(){
