@@ -1,3 +1,4 @@
+Please, open file. In preview mode it's unformated.
 Rapport is in summary mode. You can read more about gtm here: 
 https://github.com/DEVELOPEST/gtm-core
 
