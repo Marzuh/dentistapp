@@ -32,4 +32,7 @@ public interface DentistVisitRepository extends JpaRepository<DentistVisitEntity
 
     @Query//("select dve from DentistVisitEntity dve where dve.booked=:false")
     List<DentistVisitEntity> findAllByBookedFalse();
+
+    @Query
+    List<DentistVisitEntity> findAllByBookedTrue();
 }

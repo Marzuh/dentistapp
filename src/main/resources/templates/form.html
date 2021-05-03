@@ -7,59 +7,79 @@
 <div id="container-fluid">
     <div id="navigation" style="background-color: #0a4275;" th:include="/_menu"></div>
 
-<form action="#" th:action="@{/register2}" th:object="${dentistDTO}" method="post">
-    <table>
-        <tr>
-            <td><p th:text="#{dentist.name}">dentist.name</p></td>
-            <td><select name="*{dentistId}" id="*{dentistId}" onchange="this.form.submit()" th:field="*{dentistId}">
-                <option value="" th:text="#{select.dentist}">--</option>
-                <option th:each="dentist : ${dentistList}"
-                        th:value="${dentist.getId()}"
-                        th:text="${dentist.getFullName()}">Dentist's name
-                </option>
-            </select>
-            <td th:if="${#fields.hasErrors('dentistId')}" th:errors="*{dentistId}">name.error</td>
-            </td>
-        </tr>
-    </table>
-</form>
+    <div class="container border border-info rounded my-5">
+        <div class="row">
+            <div class="col-sm-10 mt-5">
+                <form action="#" th:action="@{/register2}" th:object="${dentistDTO}" method="post">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label" for="*{dentistId}" th:text="#{dentist.name}">Dentist
+                            name</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="*{dentistId}" id="*{dentistId}"
+                                    onchange="this.form.submit()"
+                                    th:field="*{dentistId}">
+                                <option value="" th:text="#{select.dentist}">--</option>
+                                <option th:each="dentist : ${dentistList}"
+                                        th:value="${dentist.getId()}"
+                                        th:text="${dentist.getFullName()}">Dentist's name
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 mt-5">
+                <form action="#" th:action="@{/register}" th:object="${dentistVisitDTO}" method="post"
+                      th:if="${savedDentistId}">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label" for="*{visitId}" th:text="#{visit.date}">
+                            Visit time
+                        </label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="*{visitId}" id="*{visitId}"
+                                    th:field="${dentistVisitDTO.visitId}">
+                                <option value="" th:text="#{select.visit}"> --</option>
+                                <option th:each="visit : ${visitTimes}"
+                                        th:value="${visit.getId()}"
+                                        th:text="${visit.getVisitTimeToString()}">Dentist's name
+                                </option>
+                            </select>
+                        </div>
+                        <div th:if="${#fields.hasErrors('visitId')}" th:errors="*{visitId}">
+                            date.error
+                        </div>
+                    </div>
 
-<form action="#" th:action="@{/register}" th:object="${dentistVisitDTO}" method="post"
-th:if="${savedDentistId}">
-    <table>
-        <tr>
-            <td><p th:text="#{visit.date}">visit.date</p></td>
-            <td><select name="*{visitId}" th:field="${dentistVisitDTO.visitId}">
-                <option value="" th:text="#{select.visit}"> --</option>
-                <option th:each="visit : ${visitTimes}"
-                        th:value="${visit.getId()}"
-                        th:text="${visit.getVisitTimeToString()}">Dentist's name
-                </option>
-            </select>
-            <td th:if="${#fields.hasErrors('visitId')}" th:errors="*{visitId}">date.error</td>
-            </td>
-        </tr>
-        <tr>
-            <td><p th:text="#{visitor.id}">visitor.id</p></td>
-            <td><input type="text" th:field="*{visitorId}"/></td>
-            <td><input type="hidden" th:field="*{dentistId}" th:value="${savedDentistId}"/></td>
-            <td th:if="${#fields.hasErrors('visitorId')}" th:errors="*{visitorId}">visitor.error</td>
-        </tr>
-        <tr>
-            <td th:if="${visitAlreadyBooked}" th:text="#{dentistForm.timeNotAvailable}">date.error
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label" for="*{visitorId}" th:text="#{visitor.id}">
+                            Visitor ID
+                        </label>
+                        <div class="col-sm-8">
+                                <input class="form-control" type="text" id="*{visitorId}" th:field="*{visitorId}"/>
+                                <input class="form-control" type="hidden" th:field="*{dentistId}" th:value="${savedDentistId}"/>
 
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="/">Esilehel</a>
-            </td>
-            <td>
-                <button type="submit" th:text="#{registration.submin}"></button>
-            </td>
-        </tr>
-    </table>
-</form>
+                                <div th:if="${#fields.hasErrors('visitorId')}" th:errors="*{visitorId}">visitor.error
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col" th:if="${visitAlreadyBooked}" th:text="#{dentistForm.timeNotAvailable}">
+                            date.error
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="submit" class="btn btn-info" th:text="#{registration.submin}">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div th:include="/_footer"></div>
 </div>
 

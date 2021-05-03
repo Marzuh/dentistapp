@@ -78,7 +78,4 @@ public class DentistVisitEntity {
                         .withZone( ZoneId.systemDefault() );
         return formatter.format(visitTime);
     }
-
-    //TODO implementation
-
 }

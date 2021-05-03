@@ -8,29 +8,39 @@
 <div id="container-fluid">
     <div id="navigation" style="background-color: #0a4275;" th:include="/_menu"></div>
     <div>
-        <table border="1">
+            <div class="d-flex flex-row justify-content-center  col-12 mt-5">
+                <div class="col-2 h3" th:text="#{submitedVisits.visitorId}">Visitor ID</div>
+                <div class="col-2 h3" th:text="#{submitedVisits.dentistId}">Dentist ID</div>
+                <div class="col-2 h3" th:text="#{submitedVisits.visitDate}">Visit date</div>
+                <div class="col-6 h3" th:text="#{submitedVisits.control}">Control</div>
+            </div>
 
-            <tr>
-                <th>Visitor ID</th>
-                <th>Dentist ID</th>
-                <th>Visit date</th>
-            </tr>
-            <tr th:each="visit : ${registeredVisits}">
-                <td th:text="${visit.getVisitorId()}">visitor.id</td>
-                <td th:text="${visit.getDentistId()}">dentist.id</td>
-                <td th:text="${visit.getVisitTimeToString()}">date</td>
-                <td>
-                    <form th:action="@{/delete-visit}" th:object="${DentistVisitDTO}" method="post">
-                        <input type="hidden" name="visitorId" th:value="${visit.getVisitorId()}"/>
-                        <input type="hidden" name="dentistId" th:value="${visit.getDentistId()}"/>
-                        <input type="hidden" name="visitId" th:value="${visit.getId()}"/>
-                        <button type="submit">Delete</button>
-                    </form>
-                </td>
-                <td>edit</td>
-                <td th:if="${bookedTimeError}" th:text="#{visits.alreadyDeleted}">bookedTime.error</td>
-            </tr>
-        </table>
+            <div class="d-flex flex-row  border border-info col-12"
+                 th:each="visit : ${registeredVisits}">
+                <div class="col-2  align-self-center" th:text="${visit.getVisitorId()}">visitor.id</div>
+                <div class="col-2  align-self-center" th:text="${visit.getDentistId()}">dentist.id</div>
+                <div class="col-2 align-self-center" th:text="${visit.getVisitTimeToString()}">date</div>
+                <div class="col-2 align-self-center">
+
+                        <form th:action="@{/delete-visit}" th:object="${DentistVisitDTO}" method="post">
+                            <div class="d-flex flex-row ">
+                                <div class="col-1">
+                                    <div class="form-group align-self-center">
+                                        <input type="hidden" name="visitorId" th:value="${visit.getVisitorId()}"/>
+                                        <input type="hidden" name="dentistId" th:value="${visit.getDentistId()}"/>
+                                        <input type="hidden" name="visitId" th:value="${visit.getId()}"/>
+                                    </div>
+                                </div>
+                                <div class="col-1 align-self-center">
+                                <button type="submit" class="btn btn-info ">Delete</button>
+                                </div>
+                            </div>
+                        </form>
+
+                </div>
+                <div class="col-1 align-self-center">edit</div>
+                <div class="col-3 align-self-center" th:if="${bookedTimeError}" th:text="#{visits.alreadyDeleted}">bookedTime.error</div>
+            </div>
     </div>
     <div th:include="/_footer"></div>
 </div>

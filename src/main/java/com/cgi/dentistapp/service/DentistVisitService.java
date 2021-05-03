@@ -41,11 +41,8 @@ public class DentistVisitService {
         dentistVisitRepository.delete(id);
     }
 
-    //TODO change to correct request to DB
-    public List<DentistVisitEntity> getRegisteredVisits(){
-        return getAllDentistVisit().stream()
-                .filter(dentistVisitEntity -> dentistVisitEntity.isBooked())
-                .collect(Collectors.toList());
+    public List<DentistVisitEntity> getRegisteredVisits() {
+        return dentistVisitRepository.findAllByBookedTrue();
     }
 
     public List<DentistVisitEntity> getAllFreeDentistVisits() {
@@ -59,14 +56,15 @@ public class DentistVisitService {
         dentistVisitRepository.save(dve);
     }
 
-    public boolean isVisitAvailable(Long visitId){
-        return  !dentistVisitRepository.findDentistVisitEntityById(visitId).isBooked();
+    public boolean isVisitAvailable(Long visitId) {
+        return !dentistVisitRepository.findDentistVisitEntityById(visitId).isBooked();
     }
 
-    public List<DentistVisitEntity> getVisitsById(Long id){
-      //return dentistVisitRepository.findDentistVisitEntitiesById(id);
-       return dentistVisitRepository.findDentistVisitEntitiesByBookedFalseAndId(id);
+    public List<DentistVisitEntity> getVisitsById(Long id) {
+        //return dentistVisitRepository.findDentistVisitEntitiesById(id);
+        return dentistVisitRepository.findDentistVisitEntitiesByBookedFalseAndId(id);
     }
+
     /**
      * For test purpose
      * add visits times to temporary database at each  new spring start
