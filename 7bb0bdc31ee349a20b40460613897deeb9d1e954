@@ -1,0 +1,7 @@
+[ver:1,total:1200,branch:master]
+.gtm/Spring Boot-> DentistAppApplication.app:674,1620057600:674,r
+src/main/resources/templates/_menu.html:300,1620057600:300,r
+.gtm/com.intellij.ide.actions.runAnything.execution.RunAnythingRunProfile@165e984.app:180,1620057600:180,r
+src/main/java/com/cgi/dentistapp/DentistAppApplication.java:24,1620057600:24,m
+src/main/java/com/cgi/dentistapp/WebConfiguration.java:12,1620057600:12,r
+src/main/java/com/cgi/dentistapp/dto/DentistAddNewVisitTimeDTO.java:10,1620057600:10,r
